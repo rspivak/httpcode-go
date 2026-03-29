@@ -1,0 +1,46 @@
+version: 2
+
+builds:
+  - main: ./cmd/hc
+    binary: hc
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+
+archives:
+  - formats:
+      - tar.gz
+    format_overrides:
+      - goos: windows
+        formats:
+          - zip
+    name_template: "hc_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+brews:
+  - repository:
+      owner: rspivak
+      name: homebrew-tap
+    name: httpcode
+    homepage: "https://github.com/rspivak/httpcode-go"
+    description: "Explain HTTP status codes on the command line"
+    license: "MIT"
+    install: |
+      bin.install "hc"
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
