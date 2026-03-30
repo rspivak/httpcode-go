@@ -2,7 +2,7 @@
 <p align="center">Look up HTTP status codes from the terminal</p>
 
 <p align="center">
-  <img src="demo.png" alt="hc demo" width="400">
+  <img src="demo.png" alt="hc demo" width="500">
 </p>
 
 <p align="center">

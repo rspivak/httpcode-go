@@ -107,13 +107,13 @@ func TestMatchByTextInvalidRegex(t *testing.T) {
 }
 
 func TestMatchByTextSearchesMessageAndExplain(t *testing.T) {
-	// "WebDAV" appears in Explain, not Message
-	results, err := matchByText(statusCodes, "WebDAV")
+	// "replayed" appears in Explain for 425, not in Message
+	results, err := matchByText(statusCodes, "replayed")
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(results) == 0 {
-		t.Error("expected results for 'WebDAV' (appears in explanations)")
+		t.Error("expected results for 'replayed' (appears in explanations)")
 	}
 }
 
